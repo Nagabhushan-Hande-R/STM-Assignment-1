@@ -72,6 +72,10 @@ const { Builder, By, Key, until } = require('selenium-webdriver');
         console.error(e);
     }
 
+    await driver.sleep(6000);
+
+    await driver.quit();
+
 })();
 
 //function to build the format
