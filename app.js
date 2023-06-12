@@ -7,7 +7,7 @@ const { Builder, By, Key, until } = require('selenium-webdriver');
     let StandardXpath = `//span[contains(text(),'{?}')]/parent::*/parent::*/parent::*/following-sibling::div//{?}`;
 
     // Open URL
-    await driver.get('https://forms.gle/eu3ka1eW3djAsudS7');
+    await driver.get('https://forms.gle/9rAg4YKtNUh6CPB26');
     await driver.manage().window().maximize();
 
     // wait for one second, until page gets fully loaded
