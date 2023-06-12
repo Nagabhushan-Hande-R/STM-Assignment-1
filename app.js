@@ -7,7 +7,7 @@ const { Builder, By, Key, until } = require('selenium-webdriver');
     let StandardXpath = `//span[contains(text(),'{?}')]/parent::*/parent::*/parent::*/following-sibling::div//{?}`;
 
     // Open URL
-    await driver.get('https://forms.gle/vWVmojtWdfFvEj8V6');
+    await driver.get('https://forms.gle/eu3ka1eW3djAsudS7');
     await driver.manage().window().maximize();
 
     // wait for one second, until page gets fully loaded
@@ -91,5 +91,5 @@ async function fillData(driver, StandardXpath) {
     await driver.findElement(By.xpath(buildFormat(StandardXpath, ['Email', 'input']))).sendKeys("myemail@gmail.com");
     await driver.findElement(By.xpath(buildFormat(StandardXpath, ['Address', 'textarea']))).sendKeys("my address");
     await driver.findElement(By.xpath(buildFormat(StandardXpath, ['Phone number', 'input']))).sendKeys("1234567891");
-    await driver.findElement(By.xpath(buildFormat(StandardXpath, ['Comments', 'textarea']))).sendKeys("Good bye STM");
+    await driver.findElement(By.xpath(buildFormat(StandardXpath, ['Comments', 'textarea']))).sendKeys("No comments");
 }
