@@ -27,15 +27,25 @@ const { Builder, By, Key, until } = require('selenium-webdriver');
     try {
         await fillData(driver, StandardXpath);
         let NameText = await driver.findElement(By.xpath(buildFormat(StandardXpath, ['Name', 'input']))).getAttribute('value');
-        let emailText = await driver.findElement(By.xpath(buildFormat(StandardXpath, ['Name', 'input']))).getAttribute('value');
+        let emailText = await driver.findElement(By.xpath(buildFormat(StandardXpath, ['Email', 'input']))).getAttribute('value');
+        let addressText = await driver.findElement(By.xpath(buildFormat(StandardXpath, ['Address', 'textarea']))).getAttribute('value');
+        let phoneNumber = await driver.findElement(By.xpath(buildFormat(StandardXpath, ['Phone number', 'input']))).getAttribute('value');
+        let comments = await driver.findElement(By.xpath(buildFormat(StandardXpath, ['Comments', 'textarea']))).getAttribute('value');
 
-        if (NameText === "MyName" && emailText === "myemail@gmail.com") {
-            await console.log("The Data is filled");
+        if (NameText === "MyName" && emailText === "myemail@gmail.com" && addressText==="my address" && phoneNumber==="1234567891" && comments==="No comments") {
+            console.log("The Data is filled");
         }
         await driver.findElement(By.xpath("//span[contains(text(),'Clear form')]")).click();
         await driver.findElement(By.xpath("(//div[@role='alertdialog']//span[contains(text(),'Clear form')])[2]")).click();
-        if (NameText === '' && emailText === '') {
-            await console.log("The Data is cleared");
+
+        NameText = await driver.findElement(By.xpath(buildFormat(StandardXpath, ['Name', 'input']))).getAttribute('value');
+        emailText = await driver.findElement(By.xpath(buildFormat(StandardXpath, ['Email', 'input']))).getAttribute('value');
+        addressText = await driver.findElement(By.xpath(buildFormat(StandardXpath, ['Address', 'textarea']))).getAttribute('value');
+        phoneNumber = await driver.findElement(By.xpath(buildFormat(StandardXpath, ['Phone number', 'input']))).getAttribute('value');
+        comments = await driver.findElement(By.xpath(buildFormat(StandardXpath, ['Comments', 'textarea']))).getAttribute('value');
+        
+        if (NameText === '' && emailText === '' && addressText==='' && phoneNumber==='' && comments==='') {
+            console.log("The Data is cleared");
         }
     } catch (error) {
         console.error(error);
@@ -49,9 +59,9 @@ const { Builder, By, Key, until } = require('selenium-webdriver');
         await driver.findElement(By.xpath("//span[contains(text(),'Submit')]")).click();
         const alertOccurences = await driver.findElements(By.xpath("//div[@role='alert']/span"));
         if (alertOccurences.length === 3 && await driver.findElement(By.xpath("(//div[@role='alert']/span)[1]")).getText() === "This is a required question") {
-            await console.log("SUCCESS");
+            console.log("SUCCESS");
         } else {
-            await console.log("FAILURE");
+            console.log("FAILURE");
         }
     } catch (error) {
         console.error(error);
@@ -63,10 +73,10 @@ const { Builder, By, Key, until } = require('selenium-webdriver');
         await driver.findElement(By.xpath(buildFormat(StandardXpath, ['Address', 'textarea']))).click();
         let Emailalert = await driver.findElement(By.xpath("(//div[@role='alert']/span)[2]")).getText();
         if (Emailalert === "Please enter a valid email address") {
-            await console.log("SUCCESS");
+            console.log("SUCCESS");
         }
         else {
-            await console.log("FAILURE");
+            console.log("FAILURE");
         }
     } catch (e) {
         console.error(e);
